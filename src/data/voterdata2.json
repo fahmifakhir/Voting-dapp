@@ -1,0 +1,80 @@
+{    
+    "voterData": [
+      {
+        "identifier": "12345",
+        "name": "fahmi",
+        "birthdate": "03-04-2000"
+      },
+      {
+        "identifier": "12364",
+        "name": "sheny",
+        "birthdate": "03-04-2000"
+      },
+      {
+        "identifier": "12323",
+        "name": "luqman",
+        "birthdate": "03-04-2000"
+      },
+      {
+        "identifier": "12354",
+        "name": "hakim",
+        "birthdate": "03-04-2000"
+      },
+      {
+        "identifier": "12390",
+        "name": "lili",
+        "birthdate": "03-04-2000"
+      },
+      {
+        "identifier": "12300",
+        "name": "nanda",
+        "birthdate": "03-04-2000"
+      },
+      {
+        "identifier": "12389",
+        "name": "bambang",
+        "birthdate": "03-04-2000"
+      },
+      {
+        "identifier": "12378",
+        "name": "shidiq",
+        "birthdate": "03-04-2000"
+      },
+      {
+        "identifier": "12334",
+        "name": "lukas",
+        "birthdate": "03-04-2000"
+      },
+      {
+        "identifier": "12356",
+        "name": "Ali",
+        "birthdate": "03-04-2000"
+      },
+      {
+        "identifier": "12365",
+        "name": "RIja",
+        "birthdate": "03-04-2000"
+      },
+      {
+        "identifier": "12325",
+        "name": "tamam",
+        "birthdate": "03-04-2000"
+      },
+      {
+        "identifier": "12315",
+        "name": "abid",
+        "birthdate": "03-04-2000"
+      },
+      {
+        "identifier": "12391",
+        "name": "lissa",
+        "birthdate": "03-04-2000"
+      },
+      {
+        "identifier": "12382",
+        "name": "fatima",
+        "birthdate": "03-04-2000"
+      }
+    ]
+  }
+  

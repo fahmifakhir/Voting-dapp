@@ -1,0 +1,79 @@
+{
+  "voterData": [
+    {
+      "identifier": "19872",
+      "name": "rizal",
+      "birthdate": "03-04-2000"
+    },
+    {
+      "identifier": "45621",
+      "name": "sheny",
+      "birthdate": "10-07-2000"
+    },
+    {
+      "identifier": "44221",
+      "name": "lukas",
+      "birthdate": "10-08-2000"
+    },
+    {
+      "identifier": "33322",
+      "name": "jai",
+      "birthdate": "12-01-2000"
+    },
+    {
+      "identifier": "80901",
+      "name": "alex",
+      "birthdate": "05-01-2000"
+    },
+    {
+      "identifier": "92671",
+      "name": "ahmad",
+      "birthdate": "05-02-2000"
+    },
+    {
+      "identifier": "12277",
+      "name": "rian",
+      "birthdate": "06-02-2000"
+    },
+    {
+      "identifier": "55674",
+      "name": "lulu",
+      "birthdate": "06-03-2000"
+    },
+    {
+      "identifier": "78982",
+      "name": "lisa",
+      "birthdate": "02-03-2000"
+    },
+    {
+      "identifier": "78721",
+      "name": "kojek",
+      "birthdate": "02-08-2000"
+    },
+    {
+      "identifier": "23134",
+      "name": "brian",
+      "birthdate": "01-09-2000"
+    },
+    {
+      "identifier": "90921",
+      "name": "rija",
+      "birthdate": "01-05-2000"
+    },
+    {
+      "identifier": "52123",
+      "name": "tamam",
+      "birthdate": "08-05-2000"
+    },
+    {
+      "identifier": "44215",
+      "name": "ali",
+      "birthdate": "08-06-2000"
+    },
+    {
+      "identifier": "55788",
+      "name": "fahmi",
+      "birthdate": "14-09-2000"
+    }
+  ]
+}
