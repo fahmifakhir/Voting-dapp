@@ -35,6 +35,7 @@ contract Voting is Ownable {
 
 
     uint public votingCount = 1;
+    mapping(uint => uint) public indexToRoomId;
     mapping(uint => Detail) public votingDetails;
     mapping(uint => History[]) public votingHistory;
     mapping(uint => address[]) public voterVerified;
@@ -53,6 +54,7 @@ contract Voting is Ownable {
         details.startTime = (_startTime * 1 hours) + block.timestamp;
         details.roomId = _roomId;
         details.proposer = msg.sender;
+        indexToRoomId[votingCount] = _roomId; 
         votingCount ++;
     }
 
@@ -72,9 +74,9 @@ contract Voting is Ownable {
        
         Candidate[] storage  candidates= votingDetails[_votingId].candidates;
         candidates[index].votes = candidates[index].votes + 1;
-        votingHistory[_votingId].push(History(_voter, _candidate, block.timestamp));
-
-        voterToHistory[_voter].push(voterHistory(_votingId , _candidate, block.timestamp));
+        votingHistory[_votingId].push(History(_voter, _candidate, block.timestamp*1000));
+        uint _roomId = indexToRoomId[_votingId]; 
+        voterToHistory[_voter].push(voterHistory(_roomId , _candidate, block.timestamp*1000));
 
     }
 
@@ -96,10 +98,6 @@ contract Voting is Ownable {
 
     function getHistory(uint _votingId) external view returns(History[] memory history) {
         history = votingHistory[_votingId];
-    }
-
-    function addVoterHistory(address _voter, uint _votingId, uint _candidateId, uint _timeStamp) external{
-        voterToHistory[_voter].push(voterHistory (_votingId , _candidateId, _timeStamp));
     }
 
     function getVoterHistory(address _voter) external view returns( voterHistory[] memory) {

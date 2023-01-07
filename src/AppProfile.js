@@ -3,7 +3,7 @@ import NotConnected from "./NotConnected";
 import DataABI from "./abi/Voting.json";
 import { ethers } from "ethers";
 
-const VotingContract = "0x463651Ae5b82a16ee90E1BC384c5A0461043a653";
+const VotingContract = "0xD5c6eB323224559f77a3c058B35AF5eD9Ec90994";
 
 const AppProfile = ({ account, setAccount, setApp }) => {
   const isConnected = Boolean(account[0]);
@@ -65,7 +65,7 @@ const AppProfile = ({ account, setAccount, setApp }) => {
                     {voterHistory.map((hist, index) => (
                       <tr>
                         <td className="text-center">
-                          {hist.votingId.toString()}
+                        {hist.roomId.toString()}
                         </td>
                         <td className="text-center">
                           {hist.candidateId.toString()}

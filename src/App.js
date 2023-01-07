@@ -5,6 +5,8 @@ import { useState } from "react";
 import Navbar from "./Navbar";
 import Home from "./Home";
 import About from "./About";
+import HowToUse from "./HowToUse";
+
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,8 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 import AppHome from "./AppHome";
 import AppProfile from "./AppProfile";
 
-import keccak256 from "keccak256";
-import Merkletree from "merkletreejs";
+
 import VotingRoom from "./VotingRoom";
 import CreateVoting from "./CreateVoting";
 import RegisterVoting from "./RegisterVoting";
@@ -40,6 +41,7 @@ function App() {
           >
             <Route index element={<Home app={app} setApp={setApp} />} />
             <Route path="about" element={<About app={app} setApp={setApp} />} />
+            <Route path="how-to-use" element={<HowToUse app={app} setApp={setApp} />} />
             <Route path="/app/">
               <Route
                 index

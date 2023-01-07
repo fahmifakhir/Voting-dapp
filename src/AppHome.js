@@ -6,7 +6,7 @@ import VotingABI from "./abi/Voting.json";
 import NotConnected from "./NotConnected";
 import { toast } from "react-toastify";
 
-const VotingContract = "0x463651Ae5b82a16ee90E1BC384c5A0461043a653";
+const VotingContract = "0xD5c6eB323224559f77a3c058B35AF5eD9Ec90994";
 
 const AppHome = ({ account, setAccount, setApp }) => {
   const isConnected = Boolean(account[0]);

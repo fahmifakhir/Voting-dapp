@@ -76,7 +76,7 @@
 #about-title {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 72px;
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 
 #app-title {
@@ -197,3 +197,38 @@ th {
 td {
   font-family: monospace;
 }
+
+.div-middle {
+  margin: 0 auto;
+}
+
+.middle-text {
+  /* text-align: center; */
+  margin: 15px 300px;
+}
+
+.middle1 {
+  margin-left: 200px;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+}
+
+p {
+  font-size: 18px;
+  font-weight: 450;
+}
+
+li {
+  font-size: 18px;
+}
+
+.middle-text h4 {
+  margin-top: 30px;
+}
+
+/* .indented {
+  text-indent: 40px;
+} */

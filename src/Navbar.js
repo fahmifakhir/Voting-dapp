@@ -39,7 +39,7 @@ const NavBar = ({ app, setApp, account, setAccount }) => {
               Create
             </NavLink>
           </div>
-          
+
           <div className="col-2 d-flex flex-column justify-content-center align-items-center">
             <NavLink id="navbar-list" to="/app/profile">
               {" "}
@@ -77,35 +77,39 @@ const NavBar = ({ app, setApp, account, setAccount }) => {
           )}
         </div>
       ) : (
-        <div id="navbar" className="d-flex justify-content-around align-items-center p-2 m-1"
+        <div
+          id="navbar"
+          className="d-flex justify-content-around align-items-center p-2 m-1"
         >
-        
           <Link id="navbar-list" to="/">
             {" "}
             Home
+          </Link>
+          <Link id="navbar-list" to="/how-to-use">
+            {" "}
+            How to use
           </Link>
           <Link id="navbar-list" to="/about">
             {" "}
             About
           </Link>
-            <Link
-              id="navbar-list"
-              onClick={() =>{
-                connectAccount();
-                setApp(true);
-              }}
-              to="/app/"
-              className="col-1 btn m-1 p-1 d-flex align-items-center"
-            >
-              <img
-                src="https://www.svgrepo.com/show/361411/account.svg"
-                alt="test"
-                width="24px"
-                className="mx-2"
-              />
-              Connect
-            </Link>
-
+          <Link
+            id="navbar-list"
+            onClick={() => {
+              connectAccount();
+              setApp(true);
+            }}
+            to="/app/"
+            className="col-1 btn m-1 p-1 d-flex align-items-center"
+          >
+            <img
+              src="https://www.svgrepo.com/show/361411/account.svg"
+              alt="test"
+              width="24px"
+              className="mx-2"
+            />
+            Connect
+          </Link>
         </div>
       )}
 

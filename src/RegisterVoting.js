@@ -12,8 +12,8 @@ import data1 from "../src/data/voterdata1.json";
 import data2 from "../src/data/voterdata2.json";
 import { set } from "date-fns";
 
-const VotingContract = "0x463651Ae5b82a16ee90E1BC384c5A0461043a653";
-const VoterContract = "0x9bA779077768AfD239705C9aceAc88135C91ff02";
+const VotingContract = "0xD5c6eB323224559f77a3c058B35AF5eD9Ec90994";
+const VoterContract = "0xD1E3c3260B4fABC414D240303965b4C37fE68490";
 
 const whitelist = [data1, data2];
 let finalArray;

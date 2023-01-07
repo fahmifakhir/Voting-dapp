@@ -6,11 +6,10 @@ import { ethers } from "ethers";
 import keccak256 from "keccak256";
 import MerkleTree from "merkletreejs";
 import NotConnected from "./NotConnected";
-import { fromUnixTime, getTime, set } from "date-fns";
+import { getTime } from "date-fns";
 
 import PuffLoader from "react-spinners/PuffLoader";
 import { toast } from "react-toastify";
-import { is } from "date-fns/locale";
 
 import data1 from "../src/data/voterdata1.json";
 import data2 from "../src/data/voterdata2.json";
@@ -18,9 +17,9 @@ import data2 from "../src/data/voterdata2.json";
 const whitelist = [data1, data2];
 let finalArray;
 
-const VotingContract = "0x463651Ae5b82a16ee90E1BC384c5A0461043a653";
+const VotingContract = "0xD5c6eB323224559f77a3c058B35AF5eD9Ec90994";
 
-const VoterContract = "0x9bA779077768AfD239705C9aceAc88135C91ff02";
+const VoterContract = "0xD1E3c3260B4fABC414D240303965b4C37fE68490";
 
 const VotingRoom = ({ account, setAccount, setApp }) => {
   const isConnected = Boolean(account[0]);
@@ -42,13 +41,12 @@ const VotingRoom = ({ account, setAccount, setApp }) => {
     signer
   );
   const voterContract = new ethers.Contract(VoterContract, DataABI.abi, signer);
-  
-  async function getVotingDetails(){
 
+  async function getVotingDetails() {
     const history = await votingContract.getHistory(roomId);
     const details = await votingContract.votingDetails(roomId);
     const candidates = await votingContract.getCandidates(roomId);
-    
+
     setCandidates(candidates);
     setDetails(details);
     setHistory(history);
@@ -59,7 +57,10 @@ const VotingRoom = ({ account, setAccount, setApp }) => {
     const timeNow = getTime(new Date());
     const duration = details.duration * 3600000;
     const timeStart = details.startTime * 1000;
-    const totalDuration = timeStart+duration;
+    const totalDuration = timeStart + duration;
+
+    let startDate = new Date(timeStart);
+    let endDate = new Date(totalDuration);
 
     if (timeNow > timeStart && timeNow < totalDuration) {
       setStatus("Started");
@@ -68,7 +69,8 @@ const VotingRoom = ({ account, setAccount, setApp }) => {
     } else {
       setStatus("Session Ended");
     }
-
+    console.log("session start : " + startDate);
+    console.log("Session End : " + endDate);
   }
   async function vote() {
     setSending(true);
@@ -121,7 +123,7 @@ const VotingRoom = ({ account, setAccount, setApp }) => {
 
   async function sendProof() {
     setSending(true);
-    const votingLength = await votingContract.votingCount() - 1;
+    const votingLength = (await votingContract.votingCount()) - 1;
 
     for (let i = 0; i < votingLength; i++) {
       const object = Object.values(data1.voterData);
@@ -135,52 +137,50 @@ const VotingRoom = ({ account, setAccount, setApp }) => {
     const WhitelistTree = new MerkleTree(WhitelistLeaves, keccak256, {
       sortPairs: true,
     });
-    
+
     const voterAddress = await signer.getAddress();
     const leafBytes = await voterContract.getLeaves(voterAddress);
     const hexProof = WhitelistTree.getHexProof(leafBytes);
-    
-    
+
     const rootHash = await voterContract.votingToRoot(votingLength);
     const isVerified = WhitelistTree.verify(hexProof, leafBytes, rootHash);
     WhitelistTree.verify(hexProof, leafBytes, rootHash);
 
     console.log(isVerified);
-    
-    if(isVerified === true){
+
+    if (isVerified === true) {
       setVerified(isVerified);
       try {
-      await votingContract.verifyVoter(roomId, isVerified).then(
-        (response) => {
-          toast
-            .promise(provider.waitForTransaction(response.hash), {
-              pending: "🗳️ Validating your data...",
-              success: "Validation Success!",
-              error: "Transaction Failed",
-            })
-            .then(() => {
-              setSending(false);
-              getVotingDetails();
-            });
-        },
-        (error) => {
-          setSending(false);
-        }
-      );
-    } catch (error) {
-      console.log(error);
+        await votingContract.verifyVoter(roomId, isVerified).then(
+          (response) => {
+            toast
+              .promise(provider.waitForTransaction(response.hash), {
+                pending: "🗳️ Validating your data...",
+                success: "Validation Success!",
+                error: "Transaction Failed",
+              })
+              .then(() => {
+                setSending(false);
+                getVotingDetails();
+              });
+          },
+          (error) => {
+            setSending(false);
+          }
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      setSending(false);
+      toast.error("Your not a verified voter", {
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        progress: undefined,
+      });
     }
-  } else {
-    setSending(false);
-    toast.error("Your not a verified voter", {
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      progress: undefined,
-    });
   }
-}
-    
 
   useEffect(() => {
     getVotingDetails();
@@ -263,7 +263,12 @@ const VotingRoom = ({ account, setAccount, setApp }) => {
                       key={index}
                       className="col d-flex flex-column align-items-center"
                     >
-                      <img src="" alt="candidates" />
+                      <img
+                        src="https://img.icons8.com/stickers/512/businessman-skin-type-1.png"
+                        width="70px"
+                        height="70px"
+                        alt="candidates"
+                      />
                       <h6 className="p-2 text-center">
                         {ethers.utils.parseBytes32String(candidate.candidate)}
                       </h6>
@@ -316,8 +321,8 @@ const VotingRoom = ({ account, setAccount, setApp }) => {
             <h2 id="verify" className="p-3">
               Verify Your Data
             </h2>
-            <div>
-              <h6>{account[0]}</h6>
+            <h5>{account[0]}</h5>
+            <div className="w-25 m-2">
               <div
                 id="form-text"
                 className="form-text text-center"
@@ -336,7 +341,7 @@ const VotingRoom = ({ account, setAccount, setApp }) => {
                   size={60}
                   className="m-3"
                 />
-                <h6 id="form-text">Adding your data..</h6>
+                <h6 id="form-text">Checking data Integrity..</h6>
               </div>
             ) : (
               <button id="find-button" className="btn px-3" onClick={sendProof}>
