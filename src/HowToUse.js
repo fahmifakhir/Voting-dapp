@@ -34,9 +34,7 @@ const About = ({ app, setApp }) => {
             </ol>
             Or you can follow this video :
           </p>
-          <div className="d-flex flex-column align-items-center justify-content-center h-75">
             <ReactPlayer url= "https://youtu.be/luoSbbb37Rs" controls ={true}/>
-          </div>
           <h4>Connect your account</h4>
           <p>Click connect button on the top right of the website, then you can
           proceed to the Application Page, you can also change your address
