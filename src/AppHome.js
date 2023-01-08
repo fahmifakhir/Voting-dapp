@@ -113,7 +113,7 @@ const AppHome = ({ account, setAccount, setApp }) => {
                   value={roomId}
                 />
                 <div id="form-text" className="form-text text-center">
-                  Input the voting room code above
+                  Input the voting room Id above
                 </div>
               </div>
               <button id="find-button" className="btn px-3" onClick={enterRoom}>
