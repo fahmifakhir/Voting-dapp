@@ -13,10 +13,6 @@ const About = ({ app, setApp }) => {
       </div>
 
       <div>
-        {/* <p className="middle-text">
-          If you are new to blockchain, on this page you can follow some of the
-          steps needed to start using our voting system.
-        </p> */}
         <div className="middle-text">
           <h4>Set up your Metamask</h4>
           <p>
@@ -49,6 +45,8 @@ const About = ({ app, setApp }) => {
           to that voting session. once the vote is already submitted, you can
           always check for the vote result from the voting room and your profile
           page</p>
+          <br></br>
+          <br></br>
         </div>
       </div>
     </div>
