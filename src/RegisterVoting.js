@@ -84,6 +84,12 @@ const RegisterVoting = ({ account, setAccount, setApp }) => {
           },
           (error) => {
             setSending(false);
+            toast.error("Data already registered to this room!", {
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              progress: undefined,
+            });
           }
         );
       } catch (error) {
