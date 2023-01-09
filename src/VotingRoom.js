@@ -126,7 +126,7 @@ const VotingRoom = ({ account, setAccount, setApp }) => {
     const votingLength = (await votingContract.votingCount()) - 1;
 
     for (let i = 0; i < votingLength; i++) {
-      const object = Object.values(data1.voterData);
+      const object = Object.values(whitelist[i].voterData);
       finalArray = object.map(function (obj) {
         return [obj.identifier, obj.name, obj.birthdate];
       });

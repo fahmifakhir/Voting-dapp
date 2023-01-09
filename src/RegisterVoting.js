@@ -39,7 +39,7 @@ const RegisterVoting = ({ account, setAccount, setApp }) => {
 
   async function VoterCheck(result) {
     for (let i = 0; i < result; i++) {
-      const object = Object.values(data1.voterData);
+      const object = Object.values(whitelist[i].voterData);
       finalArray = object.map(function (obj) {
         return [obj.identifier, obj.name, obj.birthdate];
       });
