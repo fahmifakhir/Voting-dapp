@@ -77,17 +77,6 @@ function App() {
                 }
               />
               <Route
-                path="create"
-                element={
-                  <CreateVoting
-                    account={account}
-                    setAccount={setAccount}
-                    app={app}
-                    setApp={setApp}
-                  />
-                }
-              />
-              <Route
                 path="register"
                 element={
                   <RegisterVoting

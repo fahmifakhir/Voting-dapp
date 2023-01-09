@@ -32,14 +32,6 @@ const NavBar = ({ app, setApp, account, setAccount }) => {
               Register
             </NavLink>
           </div>
-
-          <div className="col-2 d-flex flex-column justify-content-center align-items-center">
-            <NavLink id="navbar-list" to="/app/create">
-              {" "}
-              Create
-            </NavLink>
-          </div>
-
           <div className="col-2 d-flex flex-column justify-content-center align-items-center">
             <NavLink id="navbar-list" to="/app/profile">
               {" "}
